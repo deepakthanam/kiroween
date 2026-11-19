@@ -1,0 +1,40 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "format-on-save",
+      "description": "Formats files the agent just wrote. Enable after Phase 0 installs prettier.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(ts|tsx|json|css|md)$",
+      "action": {
+        "type": "command",
+        "command": "pnpm exec prettier --write {{filePath}}"
+      },
+      "timeout": 30,
+      "enabled": true
+    },
+    {
+      "name": "related-tests-on-save",
+      "description": "Runs the tests related to a changed source file and feeds failures back to the agent. Enable after Phase 0.",
+      "trigger": "PostFileSave",
+      "matcher": "(packages|apps)/[^/]+/src/.*\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "pnpm exec vitest related --run {{filePath}}"
+      },
+      "timeout": 180,
+      "enabled": true
+    },
+    {
+      "name": "typecheck-on-stop",
+      "description": "Typechecks when the agent finishes a turn so type errors are reported before the next prompt. Enable after Phase 0.",
+      "trigger": "Stop",
+      "action": {
+        "type": "command",
+        "command": "pnpm -s verify:quick"
+      },
+      "timeout": 120,
+      "enabled": true
+    }
+  ]
+}

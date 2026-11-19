@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "revenant",
+  "version": "0.1.0",
+  "description": "Find dead npm dependencies in a lockfile and resurrect them with evidence that behaviour is preserved.",
+  "author": {
+    "name": "Revenant authors"
+  },
+  "keywords": [
+    "revenant",
+    "dead dependency",
+    "abandoned package",
+    "unmaintained package",
+    "deprecated package",
+    "lockfile audit",
+    "resurrect package",
+    "dependency graveyard"
+  ],
+  "license": "MIT"
+}

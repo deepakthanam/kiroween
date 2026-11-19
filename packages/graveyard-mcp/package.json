@@ -1,0 +1,9 @@
+{
+  "name": "@revenant/graveyard-mcp",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MCP server over registry, OSV and GitHub.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts"
+}

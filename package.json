@@ -1,0 +1,38 @@
+{
+  "name": "revenant",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Resurrect abandoned npm packages and prove the revived version behaves identically.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "verify": "pnpm lint && pnpm typecheck && pnpm test",
+    "verify:quick": "pnpm typecheck",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:prop": "vitest run .prop.test.ts",
+    "test:e2e": "pnpm -r --if-present test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "revenant": "tsx packages/cli/src/main.ts",
+    "dev": "pnpm -r --parallel --if-present dev",
+    "build": "pnpm -r --if-present build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.15.0",
+    "fast-check": "^4.10.3",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.1"
+  }
+}

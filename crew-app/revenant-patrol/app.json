@@ -1,0 +1,51 @@
+{
+  "name": "revenant-patrol",
+  "version": "0.1.0",
+  "displayName": "Revenant Graveyard Patrol",
+  "description": "Audits your repositories' lockfiles every night, finds newly dead npm packages and queues their resurrection.",
+  "author": "Revenant authors",
+  "license": "MIT",
+  "tags": ["dependencies", "security", "maintenance", "npm"],
+  "jobFamilies": ["software-engineering"],
+  "agents": ["agents/patrol.json"],
+  "skills": ["skills/graveyard-patrol"],
+  "mcpServers": {
+    "graveyard": {
+      "command": "node",
+      "args": ["mcp/graveyard.mjs"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  },
+  "crons": [
+    {
+      "name": "graveyard-patrol",
+      "cron_expr": "0 2 * * *",
+      "message": "Run the nightly graveyard patrol. Follow the graveyard-patrol skill exactly and post the summary when you are done.",
+      "agent": "patrol",
+      "enabled": true
+    }
+  ],
+  "ui": {
+    "entry": "ui/dist/index.mjs",
+    "pages": [
+      {
+        "route": "/apps/revenant-patrol",
+        "label": "Graveyard",
+        "icon": "Ghost"
+      }
+    ]
+  },
+  "backend": {
+    "entryPoint": "backend/server.mjs",
+    "type": "node",
+    "healthCheck": "/health"
+  },
+  "permissions": {
+    "storage": true,
+    "cron": true,
+    "network": true,
+    "mcpTools": ["audit_lockfile", "package_vitals", "resurrection_candidates"]
+  }
+}

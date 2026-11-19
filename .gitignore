@@ -1,0 +1,22 @@
+# Never add .kiro or any of its subfolders here: the hackathon rules require it to be committed.
+
+node_modules/
+dist/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+
+# Run artefacts are local, except the stored replay bundles used by the demo.
+runs/*
+!runs/replay/
+
+# Build outputs that must be committed for the Crew app are not ignored:
+!crew-app/revenant-patrol/ui/dist/
+!crew-app/revenant-patrol/mcp/
+
+.DS_Store
+playwright-report/
+test-results/
+*.sqlite

@@ -1,0 +1,29 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "protect-originals",
+      "description": "Blocks any agent write that targets frozen original packages. A non-zero exit stops the tool call.",
+      "trigger": "PreToolUse",
+      "matcher": "write",
+      "action": {
+        "type": "command",
+        "command": "node scripts/hooks/guard-paths.mjs"
+      },
+      "timeout": 10,
+      "enabled": true
+    },
+    {
+      "name": "kiro-dir-stays-committed",
+      "description": "Fails loudly if .gitignore ever excludes .kiro, which would disqualify the submission.",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)\\.gitignore$",
+      "action": {
+        "type": "command",
+        "command": "node scripts/hooks/check-gitignore.mjs"
+      },
+      "timeout": 10,
+      "enabled": true
+    }
+  ]
+}

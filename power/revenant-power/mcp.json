@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "graveyard": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@revenant/graveyard-mcp"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}

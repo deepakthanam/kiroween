@@ -1,0 +1,6 @@
+rules:
+  - capability: all
+    effect: allow
+  - capability: shell
+    match: ["rm -rf *", "sudo *", "git push --force*"]
+    effect: deny

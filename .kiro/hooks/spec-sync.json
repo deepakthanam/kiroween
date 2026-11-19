@@ -1,0 +1,27 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "properties-follow-requirements",
+      "description": "When a spec's requirements or design change, check that every correctness property still maps to a live requirement and every property has a test task. Agent action: uses credits.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.kiro/specs/[^/]+/(requirements|design)\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "A spec file was just changed. For that spec only: (1) list any correctness property in design.md whose 'Validates' requirement ids no longer exist or no longer say what the property tests; (2) list any acceptance criterion that is testable as a property but has none; (3) list any property with no matching test task in tasks.md. Propose the exact edits to design.md and tasks.md and wait for approval. Do not change source code and do not weaken any property."
+      },
+      "enabled": true
+    },
+    {
+      "name": "new-module-needs-a-property",
+      "description": "When the agent creates a new pure-logic module, remind it to add the property test beside it. Agent action: uses credits.",
+      "trigger": "PostFileCreate",
+      "matcher": "packages/(core|harness)/src/.*\\.ts$",
+      "action": {
+        "type": "agent",
+        "prompt": "A new file was created in packages/core or packages/harness. If the file is itself a test, do nothing. Otherwise, if it contains pure logic covered by a correctness property in the active spec's design.md, create the matching *.prop.test.ts beside it following the testing steering file, with the 'Feature / Property / Validates' comment. If no property applies, say so in one line and do nothing."
+      },
+      "enabled": true
+    }
+  ]
+}

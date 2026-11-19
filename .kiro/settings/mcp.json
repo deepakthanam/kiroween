@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "graveyard": {
+      "command": "node",
+      "args": ["packages/graveyard-mcp/dist/index.js"],
+      "env": {
+        "REVENANT_FIXTURES": "live",
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "disabled": true
+    }
+  }
+}

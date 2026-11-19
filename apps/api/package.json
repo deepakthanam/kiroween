@@ -1,0 +1,9 @@
+{
+  "name": "@revenant/api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fastify, SSE and SQLite API (placeholder).",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.ts"
+}
