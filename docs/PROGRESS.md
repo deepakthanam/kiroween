@@ -27,7 +27,7 @@ Deadline: Dec 4, 2026, 2:00 pm PT.
 - Docker, `--network none --memory 512m --cpus 1 --pids-limit 128 --read-only --tmpfs /tmp`: `node:8` printed `v8.17.0`, `node:24` printed `v24.22.3`.
 - `guard-paths.mjs`: exit 2 for `corpus/originals/...` and `runs/abc/original/...`, exit 0 for `packages/core/src/a.ts`. `check-gitignore.mjs`: exit 0.
 - Hooks enabled: `format-on-save`, `related-tests-on-save`, `typecheck-on-stop`, `new-module-needs-a-property`. All hook JSON files parse.
-- Repository `deepakthanam/kiroween` is public, default branch `main`, `LICENSE` is MIT. GitHub shows the licence only after the first push; see Open questions.
+- Repository `deepakthanam/kiroween` is public, default branch `main`, `LICENSE` is MIT. First commit `33964ca` pushed to `origin/main`; the GitHub API reports `license: MIT`, `private: false`.
 
 ## Corpus tracker
 
@@ -35,7 +35,6 @@ Deadline: Dec 4, 2026, 2:00 pm PT.
 |---|---|---|---|---|---|---|
 
 ## Open questions
-- First commit push: depends on whether Git has stored GitHub credentials. If the push fails, it needs the user's login.
 - The empty `revenant/` directory at the repo root is locked by the IDE. Delete it when possible.
 
 ## Links
